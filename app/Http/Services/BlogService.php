@@ -12,8 +12,12 @@ namespace App\Http\Services;
 interface BlogService
 {
     public function getAll();
+
     public function create($request);
+
     public function findById($id);
-    public function update($obj,$request);
+
+    public function update($obj, $request);
+
     public function destroy($obj);
 }

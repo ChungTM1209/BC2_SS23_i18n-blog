@@ -37,4 +37,8 @@ class PostController extends Controller
         $this->blogService->destroy($blog);
         return redirect()->route('posts.list');
     }
+    public function show($id){
+        $blog = $this->blogService->findById($id);
+        return view('list',compact('blog'));
+    }
 }

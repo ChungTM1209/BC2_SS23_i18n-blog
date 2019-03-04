@@ -16,6 +16,7 @@ use App\Http\Services\BlogService;
 class BlogServiceImpl implements BlogService
 {
     protected $blogRepository;
+
     public function __construct(BlogRepository $blogRepository)
     {
         $this->blogRepository = $blogRepository;
@@ -33,7 +34,13 @@ class BlogServiceImpl implements BlogService
         $blog = new Blog();
         $blog->name = $request->input('name');
         $blog->title = $request->input('title');
-        return $this->blogRepository->store($blog);
+        $blog->content = $request->input('content');
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $path = $image->store('images', 'public');
+            $blog->image = $path;
+        }
+        $this->blogRepository->store($blog);
     }
 
     public function findById($id)
@@ -54,6 +61,11 @@ class BlogServiceImpl implements BlogService
         // TODO: Implement update() method.
         $obj->name = $request->input('name');
         $obj->name = $request->input('title');
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $path = $image->store('images', 'public');
+            $obj->image = $path;
+        }
         return $this->blogRepository->store($obj);
     }
 }

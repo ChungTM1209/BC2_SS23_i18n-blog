@@ -1,74 +1,6 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #2d3032;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 100;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .full-height {
-            height: 100vh;
-        }
-
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .position-ref {
-            position: relative;
-        }
-
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
-
-        .title {
-            font-size: 84px;
-        }
-
-        .links > a {
-            color: #393e40;
-            padding: 0 25px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .m-b-md {
-            margin-bottom: 30px;
-        }
-        .form-create-post {
-            margin-top: 2em;
-        }
-        input, textarea {
-            width: 30em;
-            margin-bottom: 1em;
-        }
-    </style>
-</head>
-<body>
-<div class="flex-center position-ref full-height">
+@extends('layouts.master')
+@section('title','Create')
+@section('content')
     @if (Route::has('login'))
         <div class="top-right links">
             @auth
@@ -82,18 +14,28 @@
 
     <div class="content">
         <div class="links">
-            <a href="{!! route('home') !!} "> {!! __('language.home') !!}</a>
+            <a href="{!! route('home') !!} " style="color: #2d995b"> {!! __('language.home') !!} </a>
             <a href="{{route('posts.list')}}"> @lang('language.list_post')</a>
         </div>
-        <form action="{{route('posts.store')}}" method="post" class="form-create-post">
-            {{csrf_field()}}
-            <label for="title">@lang('language.title')</label> <br/>
-            <input id="title" name="title" type="text"/> <br/>
-            <label for="content">@lang('language.content')</label> <br/>
-            <textarea id="content" name="content"></textarea><br/>
-            <button type="submit" value="Create">@lang('language.save')</button>
-        </form>
     </div>
-</div>
-</body>
-</html>
+    <form method="post" action="{{route('posts.store')}}" enctype="multipart/form-data">
+        @csrf
+        <div class="form-group">
+            <label for="formGroupExampleInput">@lang('language.name')</label>
+            <input type="text" name="name" class="form-control" id="formGroupExampleInput" placeholder="@lang('language.name')">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">@lang('language.title')</label>
+            <input type="text" name="title" class="form-control" id="formGroupExampleInput2" placeholder="@lang('language.title')">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">@lang('language.content')</label>
+            <input type="text" name="content" class="form-control" id="formGroupExampleInput2" placeholder="@lang('language.content')">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">@lang('language.file')</label>
+            <input type="file" name="image" class="form-control" id="formGroupExampleInput2" placeholder="@lang('language.file')">
+        </div>
+        <button type="submit" value="Create">@lang('language.save')</button>
+    </form>
+    @endsection

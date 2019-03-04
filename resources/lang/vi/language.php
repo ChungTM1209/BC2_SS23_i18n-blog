@@ -14,4 +14,13 @@ return [
     'post_not_exist' => 'Không có bài viết nào',
     'title' => 'Tiêu đề',
     'content' => 'Nội dung',
+    'name' => 'Tên',
+    'file' => 'File ảnh',
+    'show' => 'Xem',
+    'edit' => 'Sửa',
+    'delete' => 'Xóa',
+    'update' => 'Cập nhật',
+    'messageDelete' => 'Bạn có chắc chắn muốn xóa Blog ?',
+    'language' => 'Ngôn ngữ',
+    'show_post'=> 'Chi tiết Blog'
 ];

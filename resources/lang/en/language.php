@@ -14,4 +14,13 @@ return [
     'post_not_exist' => 'Post not exist',
     'title' => 'Title',
     'content' => 'Content',
+    'name' => 'Name',
+    'file' => 'File Image',
+    'show' => 'Show',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'update' => 'Update',
+    'messageDelete' => 'Are you want to Delete Blog ?',
+    'language' => 'Language',
+    'show_post' => 'Blog Detail'
 ];

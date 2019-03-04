@@ -13,7 +13,7 @@
 Route::group(['middleware'=>'locale'],function (){
     Route::get('/', function () {
         return view('welcome');
-    });
+    })->name('home');
 // Hiển thị danh sách bài viết
     Route::get('/posts', 'PostController@index')->name('posts.list');
 
@@ -25,6 +25,10 @@ Route::group(['middleware'=>'locale'],function (){
 
 // Chuyển đổi ngôn ngữ cho website
     Route::get('change-language/{language}', 'LanguageController@changeLanguage')->name('user.change-language');
+    Route::get('/posts/{id}/edit', 'PostController@edit')->name('posts.edit');
+    Route::post('/posts/{id}/edit','PostController@update')->name('posts.update');
+    Route::get('/posts/{id}/delete','PostController@destroy')->name('posts.destroy');
+    Route::get('posts/{id}/show','PostController@show')->name('posts.show');
 });
 
 
