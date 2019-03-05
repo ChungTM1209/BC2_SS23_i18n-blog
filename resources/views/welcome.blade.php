@@ -17,5 +17,10 @@
             {{ __('language.blog_application') }}
         </div>
 
+        <div class="links">
+
+            <a href="{!! route('posts.list') !!} ">@lang('language.list_post')</a>
+            <a href="{!! route('posts.create') !!} ">@lang('language.create_post')</a>
+        </div>
     </div>
     @endsection
